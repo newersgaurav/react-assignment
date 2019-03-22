@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Header from './component/Header';
+import Main from './component/main';
+import Footer from './component/footer';
+import Aside from './component/aside';
 
 class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      counter: 0
+    }
+  }
+
+  counting = () => {
+    this.setState(
+        {
+          counter: ++this.state.counter
+        }
+      )
+  }
+
+  
+
   render() {
+    
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header c = {this.state.counter}/>
+        <div className="section">
+          <Main fn = {this.counting}/>
+          <Aside/>
+        </div>
+        <Footer/>
       </div>
     );
   }
